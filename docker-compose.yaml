@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  azurelocal:
+    image: divieon/legacyazurite
+    ports:
+      - 10000:10000
+      - 10001:10001
+      - 10002:10002
+
+  dbtester:
+    build:
+      context: .
+      dockerfile: example/example.Dockerfile
+    depends_on:
+      - azurelocal
+    # image: example/Dockerfile
